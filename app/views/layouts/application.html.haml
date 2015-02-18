@@ -8,14 +8,14 @@
     %meta{ "http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1" }
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" }
     %title= @page_title
-    - icon_name = Rails.env.production? ? "favicon.png" : "favicon_dev.png"
+    - icon_name = on_production_site? ? "favicon.png" : "favicon_dev.png"
     %link{ rel: "icon", type: "image/png", href: image_path(icon_name) }
     %link{ rel: "stylesheet", type: "text/css", href: "http://fonts.googleapis.com/css?family=Droid+Sans" }
     = stylesheet_link_tag "application", :media => :all, 'data-turbolinks-track' => true
     = csrf_meta_tags
     = yield :head
   %body
-    - if Rails.env.production?
+    - if on_production_site?
       = render "shared/tracking"
     .container
       = yield
