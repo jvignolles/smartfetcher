@@ -1,0 +1,34 @@
+# Default application variables.
+# Copy this file to `config/application.yml` and fill with correct values, keys, secrets…
+defaults: &defaults
+  project_name:         "Smart Fetcher"
+
+  # Intern
+  production_site:      "false"
+  site_tld:             "smartfetcher.herokuapp.com"
+  email_contact:        "julien.vignolles@gmail.com"
+  email_supervision:    "julien.vignolles@gmail.com"
+
+  # Keys and secrets
+  google_analytics_key: ~
+  google_analytics_tld: "smartfetcher.herokuapp.com"
+  newrelic_app_name:    "smartfetcher.herokuapp.com"
+  newrelic_license_key: "TODO"
+  # rake secret
+  SECRET_KEY_BASE:      "TODO"
+
+heroku: &heroku
+  production_site:      "true"
+  site_tld:             "smartfetcher.herokuapp.com"
+  mailer_host:          "smartfetcher.herokuapp.com"
+  google_analytics_key: "UA-XXXXXXXX-Y"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  <<: *heroku

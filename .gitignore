@@ -15,3 +15,10 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Contain passwords, keys, secrets…
+config/application.yml
+
+*~
+*.swp
+.DS_Store

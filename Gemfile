@@ -27,12 +27,22 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Application configuration, see config/application.yml
+gem 'figaro', '~> 1.0.0'
+
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'haml-rails'
+
 group :development, :test do
+  gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'sextant'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
@@ -41,5 +51,13 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+# Heroku
+group :production do
+  gem 'rails_12factor'
+
+  # Gzip compression for assets (but not images)
+  gem 'heroku-deflater'
 end
 
