@@ -1,8 +1,12 @@
 class CreatePages < ActiveRecord::Migration
   def change
     create_table :pages do |t|
-      t.string   :page_id, :limit => 128,                 :null => false
+      t.string   :name,    null: false, limit: 128
+      t.string   :page_id, null: false, limit: 64
       t.timestamps
     end
+
+    add_index :pages, :name
+    add_index :pages, :page_id
   end
 end

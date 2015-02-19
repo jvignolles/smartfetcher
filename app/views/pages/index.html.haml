@@ -1,1 +1,3 @@
-%h1 Hello!
+= render "new"
+- (@pages || []).each do |page|
+  = render "thumb", page: page

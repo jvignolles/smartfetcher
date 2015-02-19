@@ -1,1 +1,3 @@
-%h1 Hi!
+- (@page.feeds || []).each do |feed|
+  .col-xxs-12.page-feed
+    %h3.page-feed-name= feed["name"]

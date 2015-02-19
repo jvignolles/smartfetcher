@@ -18,5 +18,6 @@
     - if on_production_site?
       = render "shared/tracking"
     .container
+      %h1.heading= @page_heading
       = yield
     = javascript_include_tag "application", 'data-turbolinks-track' => true

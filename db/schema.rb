@@ -14,9 +14,13 @@
 ActiveRecord::Schema.define(version: 20150218165227) do
 
   create_table "pages", force: :cascade do |t|
-    t.string   "page_id",    limit: 128, null: false
+    t.string   "name",       limit: 128, null: false
+    t.string   "page_id",    limit: 64,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "pages", ["name"], name: "index_pages_on_name"
+  add_index "pages", ["page_id"], name: "index_pages_on_page_id"
 
 end

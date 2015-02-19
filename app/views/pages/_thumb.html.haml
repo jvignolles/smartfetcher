@@ -1,0 +1,4 @@
+.col-md-6
+  = link_to page_path(page), class: "page-thumb" do
+    = image_tag page.image_url, alt: page.name, class: "page-thumb-image"
+    %h2.page-thumb-heading= page.name

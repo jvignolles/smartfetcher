@@ -37,6 +37,10 @@ gem 'figaro', '~> 1.0.0'
 
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'haml-rails'
+gem 'simple_form'
+
+# Facebook library
+gem "koala", "~> 1.11.0rc"
 
 group :development, :test do
   gem 'quiet_assets'

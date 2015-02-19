@@ -1,0 +1,4 @@
+= simple_form_for @page, html: { class: "form-horizontal form-page" } do |f|
+  = render "shared/form_errors", item: @page
+  = f.input :page_id, label: false, autofocus: true
+  = f.button :submit
