@@ -3,10 +3,12 @@ module FetcherConcern
   extend ActiveSupport::Concern
 
   included do
+    attr_accessor :page
+
     # Fetch feeds and cache it
     def feeds
       return nil if page_id.blank?
-      @feeds ||= self.class.graph.get_connections(page_id, 'feed', { limit: 10 })
+      @feeds ||= self.class.graph.get_connections(page_id, 'feed', { limit: 10 }) rescue {}
     end
 
     # Fetch page informations and cache it
@@ -20,8 +22,14 @@ module FetcherConcern
       @graph ||= Koala::Facebook::API.new(Figaro.env.facebook_access_token)
     end
 
-    def pages(page_ids)
-      graph.get_object(page_ids)
+    # Fetch multiple pages to avoid multiple requests
+    def fetch_pages
+      items = all
+      list = graph.get_objects(items.map(&:page_id), { fields: [:id, :name, :picture] })
+      items.each do |item|
+        item.page = list[item.page_id.to_s]
+      end
+      items
     end
   end
 end

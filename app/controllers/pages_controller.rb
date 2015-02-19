@@ -27,7 +27,7 @@ class PagesController < ApplicationController
 
 private
   def init_listing
-    @pages = Page.ordered.paginate(page: params[:p])
+    @pages = Page.ordered.paginate(page: params[:p]).fetch_pages
     @page ||= Page.new
     @page_title = project_name
   end
