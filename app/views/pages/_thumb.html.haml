@@ -1,5 +1,5 @@
-.col-md-6
-  = link_to page_path(page), class: "page-thumb" do
+.col-md-4.page-thumb-wrapper
+  = link_to page_path(page), class: "page-thumb clearfix" do
     - image_url = page.image_url || "page_default.png"
     = image_tag image_url, alt: page.current_name, class: "page-thumb-image"
     %h2.page-thumb-heading= page.current_name

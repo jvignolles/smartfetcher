@@ -1,0 +1,37 @@
+.form-page {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  .help-block {
+    font-size: 11px;
+  }
+}
+.page-thumb {
+  display: block;
+  outline: 0;
+  max-height: 80px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 3px 0 hsla(0, 0, 0, 0.6);
+  &:hover {
+    background-color: $brand-light;
+  }
+}
+.page-thumb-image {
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin: 0 15px;
+}
+.page-thumb-heading {
+  font-size: 16px;
+  line-height: 20px;
+  margin: 5px 0;
+  margin: 0;
+  max-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pagination-wrapper-footer {
+  text-align: center;
+}

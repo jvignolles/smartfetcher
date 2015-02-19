@@ -34,8 +34,11 @@ gem 'unicorn'
 gem 'figaro', '~> 1.0.0'
 
 gem 'bootstrap-sass', '~> 3.3.3'
+gem 'bourbon'
 gem 'haml-rails'
 gem 'simple_form'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 gem 'newrelic_rpm'
 
 # Facebook library

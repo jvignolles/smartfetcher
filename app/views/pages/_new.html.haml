@@ -1,4 +1,10 @@
-= simple_form_for @page, html: { class: "form-horizontal form-page" } do |f|
+= simple_form_for @page, html: { class: "form-page" } do |f|
   = render "shared/form_errors", item: @page
-  = f.input :page_id, label: false, autofocus: true
-  = f.button :submit
+  .row
+    .col-md-4.col-md-offset-4
+      %p Add your Facebook page id
+      .form-group.input-group
+        = f.input_field :page_id, class: "form-control", autofocus: true
+        .input-group-btn
+          = f.button :submit, "Add", class: "btn btn-primary"
+      %p.help-block Examples: 28940545600, 5027904559, 10376464573…

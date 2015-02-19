@@ -1,2 +1,10 @@
+$brand-primary: #64594e;
+$brand-light: #d5cda9;
+$brand-dark: #3d3630;
+$layout-background: #64594e;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bourbon";
+@import "layout";
+@import "pages";

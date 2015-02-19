@@ -1,3 +1,13 @@
 = render "new"
-- (@pages || []).each do |page|
-  = render "thumb", page: page
+.row
+  .col-xs-12
+    .pagination-wrapper
+      %p.page-entries= custom_page_entries_info @pages
+.row
+  - (@pages || []).each do |page|
+    = render "thumb", page: page
+- if @pages.respond_to?(:total_pages)
+  .row
+    .col-xs-12
+      .pagination-wrapper.pagination-wrapper-footer
+        = will_paginate @pages, inner_window: 1, outer_window: 1, renderer: BootstrapPagination::Rails

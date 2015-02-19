@@ -1,6 +1,8 @@
 class Page < ActiveRecord::Base
   include FetcherConcern
 
+  self.per_page = 12
+
   strip_fields :name, :page_id
   validates :page_id, presence: true
 

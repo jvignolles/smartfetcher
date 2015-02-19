@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
   # Accessible from `root_path` instead of  `pages_path` to avoid duplicate content.
   def index
-    @pages = Page.ordered.all
+    @pages = Page.ordered.paginate(page: params[:page])
     @page = Page.new
-    init_view
+    @page_title = project_name
   end
 
   def create
@@ -25,12 +25,5 @@ class PagesController < ApplicationController
     end
     @page_title = "#{@page.current_name} | #{project_name}"
     @page_heading = @page.current_name
-    init_view
-  end
-
-private
-  def init_view
-    @page_title ||= project_name
-    @page_heading ||= project_name
   end
 end
