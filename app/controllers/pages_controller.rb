@@ -1,20 +1,18 @@
 class PagesController < ApplicationController
   # Accessible from `root_path` instead of  `pages_path` to avoid duplicate content.
   def index
-    @pages = Page.ordered.paginate(page: params[:page])
-    @page = Page.new
-    @page_title = project_name
+    init_listing
   end
 
   def create
     data = (params || {}).require(:page).permit(:page_id)
-    page = Page.new(data)
-    if page.save!
-      flash[:notice] = "Page #{page.name} added"
-    else
-      flash[:error] = "Can't add #{page.page_id}"
+    @page = Page.new(data)
+    unless @page.save
+      init_listing
+      return render "index"
     end
-    return redirect_to root_path
+    flash[:notice] = "Page « #{@page.name} » added"
+    redirect_to root_path
   end
 
   def show
@@ -25,5 +23,12 @@ class PagesController < ApplicationController
     end
     @page_title = "#{@page.current_name} | #{project_name}"
     @page_heading = @page.current_name
+  end
+
+private
+  def init_listing
+    @pages = Page.ordered.paginate(page: params[:p])
+    @page ||= Page.new
+    @page_title = project_name
   end
 end

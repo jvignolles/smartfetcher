@@ -10,4 +10,4 @@
   .row
     .col-xs-12
       .pagination-wrapper.pagination-wrapper-footer
-        = will_paginate @pages, inner_window: 1, outer_window: 1, renderer: BootstrapPagination::Rails
+        = will_paginate @pages, param_name: "p", inner_window: 1, outer_window: 1, renderer: BootstrapPagination::Rails

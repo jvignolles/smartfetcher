@@ -1,0 +1,7 @@
+- if flash.present?
+  .row
+    .col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-4.col-lg-offset-4
+      - flash.each do |key, message|
+        %div.form-errors.alert{ class: "alert-#{flash_class(key)}" }
+          %button.close{ "data-dismiss" => "alert", "type" => "button" } &times;
+          = message

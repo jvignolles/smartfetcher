@@ -11,7 +11,7 @@ module FetcherConcern
 
     # Fetch page informations and cache it
     def page
-      @page ||= self.class.graph.get_object(page_id, { fields: [:id, :name, :picture] })
+      @page ||= self.class.graph.get_object(page_id, { fields: [:id, :name, :picture] }) rescue {}
     end
   end
 
