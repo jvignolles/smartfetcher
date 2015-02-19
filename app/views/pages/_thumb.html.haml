@@ -1,4 +1,4 @@
-.col-md-4.page-thumb-wrapper
+.col-sm-6.col-md-4.page-thumb-wrapper
   = link_to page_path(page), class: "page-thumb clearfix" do
     - image_url = page.image_url || "page_default.png"
     = image_tag image_url, alt: page.current_name, class: "page-thumb-image"

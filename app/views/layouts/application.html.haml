@@ -21,7 +21,5 @@
       = link_to project_name, root_path, class: "project-name"
     .container.container-main
       = render "shared/flashes"
-      - if @page_heading.present?
-        %h1.heading= @page_heading
       = yield
     = javascript_include_tag "application", 'data-turbolinks-track' => true

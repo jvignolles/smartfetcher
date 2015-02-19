@@ -22,7 +22,6 @@ class PagesController < ApplicationController
       return redirect_to root_path
     end
     @page_title = "#{@page.current_name} | #{project_name}"
-    @page_heading = @page.current_name
   end
 
 private
