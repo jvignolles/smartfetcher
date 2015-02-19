@@ -6,12 +6,12 @@ module ApplicationHelper
   }
 
   def custom_page_entries_info(collection)
-    if collection.blank? || collection.length <= 0
+    if collection.blank? || collection.total_entries <= 0
       I18n.t("will_paginate.page_entries_info.single_page.zero")
-    elsif 1 == collection.length
+    elsif 1 == collection.total_entries
       I18n.t("will_paginate.page_entries_info.single_page.one")
     else
-      I18n.t("will_paginate.page_entries_info.single_page.other", { count: collection.length })
+      I18n.t("will_paginate.page_entries_info.single_page.other", { count: collection.total_entries })
     end
   end
 
