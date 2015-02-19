@@ -1,3 +1,11 @@
-- (@page.feeds || []).each do |feed|
-  .col-xxs-12.page-feed
-    %h3.page-feed-name= feed["name"]
+.row.large-thumb
+  = render "thumb", page: @page
+.row
+  - (@page.feeds || []).each do |feed|
+    .col-sm-6
+      .page-feed
+        %h3.page-feed-name= (feed["from"] || {})["name"]
+        - if (image_url = feed["picture"]).present?
+          = image_tag image_url, alt: "", class: "page-feed-image"
+        .page-feed-description= feed["message"]
+        .page-feed-created-at= feed["created_time"]

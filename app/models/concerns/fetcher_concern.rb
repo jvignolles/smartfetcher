@@ -7,8 +7,8 @@ module FetcherConcern
 
     # Fetch feeds and cache it
     def feeds
-      return nil if page_id.blank?
-      @feeds ||= self.class.graph.get_connections(page_id, 'feed', { limit: 10 }) rescue {}
+      return {} if page_id.blank?
+      @feeds ||= self.class.graph.get_connections(page_id, 'feed', { fields: [:id, :from, :message, :picture, :created_time], limit: 10 }) rescue {}
     end
 
     # Fetch page informations and cache it
