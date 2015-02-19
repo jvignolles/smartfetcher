@@ -4,17 +4,20 @@
     = image_tag image_url, alt: @page.current_name, class: "page-large-thumb-image"
     %h1.page-large-thumb-heading= @page.current_name
 .row
-  - (@page.feeds || []).each do |feed|
-    .col-sm-8.col-sm-offset-2.col-lg-6.col-lg-offset-3.page-feed-wrapper
-      .page-feed.clearfix
-        %strong.page-feed-name= (feed["from"] || {})["name"]
-        - if (image_url = feed["picture"]).present?
-          = image_tag image_url, alt: "", class: "page-feed-image"
-        .page-feed-content
-          - if feed["message"].present?
-            .page-feed-message= feed["message"]
-          - if feed["created_time"].present?
-            .page-feed-created-at #{time_ago_in_words(Time.parse(feed["created_time"]))} ago
+  - if @page.feeds.blank?
+    .col-xs-12.page-feeds-empty No feed…
+  - else
+    - @page.feeds.each do |feed|
+      .col-sm-8.col-sm-offset-2.col-lg-6.col-lg-offset-3.page-feed-wrapper
+        .page-feed.clearfix
+          %strong.page-feed-name= (feed["from"] || {})["name"]
+          - if (image_url = feed["picture"]).present?
+            = image_tag image_url, alt: "", class: "page-feed-image"
+          .page-feed-content
+            - if feed["message"].present?
+              .page-feed-message= feed["message"]
+            - if feed["created_time"].present?
+              .page-feed-created-at #{time_ago_in_words(Time.parse(feed["created_time"]))} ago
 .row
   .col-xs-12.page-feeds-footer
     %p= link_to "Back to listing", root_path, class: "btn btn-primary"

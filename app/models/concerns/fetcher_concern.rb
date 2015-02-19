@@ -25,7 +25,7 @@ module FetcherConcern
     # Fetch multiple pages to avoid multiple requests
     def fetch_pages
       items = all
-      list = graph.get_objects(items.map(&:page_id), { fields: [:id, :name, :picture] })
+      list = graph.get_objects(items.map(&:page_id), { fields: [:id, :name, :picture] }) rescue {}
       items.each do |item|
         item.page = list[item.page_id.to_s]
       end
