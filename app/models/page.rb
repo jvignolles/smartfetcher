@@ -6,6 +6,9 @@ class Page < ActiveRecord::Base
 
   before_save :validate_page_existence
 
+  scope :alphabetical, -> { order("name, id") }
+  scope :ordered, -> { order("created_at desc") }
+
   def image_url
     page_id.present? ? "https://graph.facebook.com/#{page_id}/picture?type=small" : nil
   end

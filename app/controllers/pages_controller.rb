@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   # Accessible from `root_path` instead of  `pages_path` to avoid duplicate content.
   def index
-    @pages = Page.all
+    @pages = Page.ordered.all
     @page = Page.new
     init_view
   end
