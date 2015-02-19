@@ -36,6 +36,7 @@ gem 'figaro', '~> 1.0.0'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'haml-rails'
 gem 'simple_form'
+gem 'newrelic_rpm'
 
 # Facebook library
 gem "koala", "~> 1.11.0rc"
