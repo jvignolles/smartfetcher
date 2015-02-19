@@ -9,8 +9,12 @@ class Page < ActiveRecord::Base
   scope :alphabetical, -> { order("name, id") }
   scope :ordered, -> { order("created_at desc") }
 
+  def current_name
+    page["name"] || name
+  end
+
   def image_url
-    page_id.present? ? "https://graph.facebook.com/#{page_id}/picture?type=small" : nil
+    (page["picture"] || {})["data"]["url"] rescue nil
   end
 
 private

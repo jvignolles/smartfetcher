@@ -23,8 +23,8 @@ class PagesController < ApplicationController
       flash[:error] = "This page doesn't exist"
       return redirect_to root_path
     end
-    @page_title = "#{@page.name} | #{project_name}"
-    @page_heading = @page.name
+    @page_title = "#{@page.current_name} | #{project_name}"
+    @page_heading = @page.current_name
     init_view
   end
 
